@@ -1,6 +1,6 @@
-# Unsupervised Resolving the Pose-Shape Ambiguity (URA)
+# (Unsupervised Resolving) the Shape-Pose Ambiguity (URA)
 
-This repository contains the code of the paper "Unsupervised Resolving the Shape-Pose Ambiguity for Learning 3D Reconstruction from Images". This code is only for help review the paper, and can not be used for other purposes.
+This repository contains the code of the AAAI-2021 paper "Shape-Pose Ambiguity in Learning 3D Reconstruction from Images".
 
 # Installation
 The code is built on Python3 and PyTorch 1.1.0. CUDA is needed in order to install the module. We rely on the [SoftRastizer](https://github.com/ShichenLiu/SoftRas) for differentiable mesh rendering. First you have to make sure that you have all dependencies in place. The simplest way to do so, is to use [anaconda](https://www.anaconda.com/). 
