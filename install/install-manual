@@ -1,0 +1,8 @@
+------------temp path
+
+python setup.py build_ext --inplace
+
+
+------------SoftRas path
+
+python setup.py install

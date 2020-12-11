@@ -1,0 +1,72 @@
+eid: shapenet_04530566_no_color
+datasource: shapenet
+category: [!!str 04530566]
+
+
+# output
+print_freq: 100
+demo_freq: 500
+checkpoint_freq: 10000
+
+# framework
+Epoch: 5
+input_size: 64
+
+SoftRender:
+  SIGMA_VAL: !!float 1e-4
+
+elevation: 30
+
+NormalGan: 
+  D_G_rate: 3
+  LAMBDA_WGAN: 10 # for wgan
+  iterations: 500000
+  batch_size: 32 
+  decay_begining: 200000 # no decay
+  decay_step: 100000
+  decay_rate: 0.5
+  D:
+    lr: !!float 1e-4
+  G:
+    lr: !!float 1e-4
+    decay_rate: 0.5
+    z_dim: 128  
+    LAMBDA_LAPLACIAN: !!float 5e-3
+    LAMBDA_FLATTEN: !!float 5e-4
+
+ViewPrediction:
+  type: 'regress' # regress or classify
+  class_num: 8
+  lr: !!float 1e-4
+  iterations: 100000
+  decay_rate: 0.5
+  decay_begining: 50000 # 
+  decay_step: 25000
+  batch_size: 32
+  
+Reconstruction:
+  use_vp: True
+  color_rec: False # whether reconstruct the color
+  color_num: 5
+  color_loss_begin: 0
+  encoder_type: resnet # resnet-18 or simple
+  lr: !!float 1e-4
+  iterations: 250000
+  decay_rate: 0.5
+  decay_begining: 150000 
+  decay_step: 50000
+  batch_size: 32
+  D_G_rate: 3
+  Lamda_WGAN: 10
+  f_dim: 512
+  LAMBDA_LAPLACIAN: !!float 5e-3
+  LAMBDA_FLATTEN: !!float 5e-4
+  LAMBDA_DISC: !!float 5e-4
+  LAMBDA_COLOR: !!float 5e-4
+  ViewGan:
+    dis_domain: view # view or img, view- between input view and random view; img- between input img 
+    # and rendered img
+    LAMBDA_WGAN: 10 # for wgan
+    lr: 1e-4
+    batch_size: 32 
+  
